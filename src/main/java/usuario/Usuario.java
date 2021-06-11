@@ -1,17 +1,25 @@
 package usuario;
-
+;
 import excepciones.GuardarropasNoExistente;
 import guardarropas.Guardarropas;
+import notificador.*;
 import prenda.Prenda;
 import propuesta.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Usuario {
-
   private final List<Guardarropas> guardarropas = new ArrayList<>();
   private final List<Propuesta> propuestas = new ArrayList<>();
+  private Atuendo atuendoSugeridoDiario;
+  // Las notificaciones deseadas estaran en la lista y las no deseadas seran eliminadas
+  private List<Notificacion> notificacionesDeseadas =
+      Arrays.asList(new NotificacionTormenta(),
+          new NotificacionGranizo(),
+          new NotificacionMail(),
+          new NotificacionSugerencia());
 
   private Usuario() {
 
@@ -56,5 +64,29 @@ public class Usuario {
     return guardarropas.stream()
         .filter(guardarropa -> guardarropa.getIdGuardarropas().equals(idGuardarropas))
         .findFirst().orElseThrow(GuardarropasNoExistente::new);
+  }
+
+  public List<Guardarropas> getTodosLosGuardarropas() {
+    return guardarropas;
+  }
+
+  public void setAtuendoSugeridoDiario(Atuendo atuendoSugeridoDiario) {
+    this.atuendoSugeridoDiario = atuendoSugeridoDiario;
+  }
+
+  public Atuendo obtenerSugerenciaDiaria() {
+    return atuendoSugeridoDiario;
+  }
+
+  public List<Notificacion> getNotificacionesDeseadas() {
+    return notificacionesDeseadas;
+  }
+
+  public void agregarNotificacionDeseada(Notificacion notificacion) {
+    this.notificacionesDeseadas.add(notificacion);
+  }
+
+  public void removerNotificacion(Notificacion notificacion) {
+    this.notificacionesDeseadas.remove(notificacion);
   }
 }

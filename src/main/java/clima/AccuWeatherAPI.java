@@ -9,6 +9,7 @@ public final class AccuWeatherAPI {
             put("EpochDateTime", 1556856000);
             put("WeatherIcon", 33);
             put("IconPhrase", "Clear");
+            put("CurrentAlerts", Arrays.asList("STORM", "HAIL"));
             put("IsDaylight", false);
             put("PrecipitationProbability", 0);
             put("MobileLink", "http://m.accuweather.com/en/ar/villa-vil/7984/");

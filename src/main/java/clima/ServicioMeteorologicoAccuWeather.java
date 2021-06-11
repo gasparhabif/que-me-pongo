@@ -3,6 +3,7 @@ package clima;
 import excepciones.ServicioMeteorologicoNoDisponible;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ServicioMeteorologicoAccuWeather implements ServicioMeteorologico {
@@ -24,6 +25,15 @@ public class ServicioMeteorologicoAccuWeather implements ServicioMeteorologico {
     public double getPrecipitaciones() {
         try {
             return (double) this.getCondicionesClimaticas().get("PrecipitationProbability");
+        } catch (Exception e) {
+            throw new ServicioMeteorologicoNoDisponible("No se pudo obtener las precipitaciones.");
+        }
+    }
+
+    @Override
+    public List<String> getAlertasMeteorlogicas() {
+        try {
+            return (List<String>) this.getCondicionesClimaticas().get("CurrentAlerts");
         } catch (Exception e) {
             throw new ServicioMeteorologicoNoDisponible("No se pudo obtener las precipitaciones.");
         }
