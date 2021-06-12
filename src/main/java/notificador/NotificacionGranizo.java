@@ -9,6 +9,7 @@ public class NotificacionGranizo implements Notificacion {
     public void notificar(Usuario usuario, List<String> nuevasAlertas) {
         if(nuevasAlertas.contains("GRANIZO")) {
             // Enviar notificacion al usuario para que guarde el auto
+            notify();
             System.out.println("Guarda el auto");
         }
     }

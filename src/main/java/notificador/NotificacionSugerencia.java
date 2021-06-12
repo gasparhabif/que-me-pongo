@@ -9,6 +9,7 @@ public class NotificacionSugerencia implements Notificacion {
     public void notificar(Usuario usuario, List<String> nuevasAlertas) {
         if (!nuevasAlertas.isEmpty()) {
           usuario.obtenerSugerenciaDiaria();
+          notify();
         }
     }
 }

@@ -26,7 +26,7 @@ public class Notificador {
     alertasMeteorologicas.addAll(nuevasAlertas);
 
     repositorioDeUsuarios.getUsuarios().forEach(usuario -> {
-      usuario.getNotificacionesDeseadas().forEach(notificacion -> notificacion.notificar(usuario, nuevasAlertas));
+      usuario.enviarNotificaciones(nuevasAlertas);
     });
   }
 

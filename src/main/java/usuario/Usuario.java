@@ -89,4 +89,8 @@ public class Usuario {
   public void removerNotificacion(Notificacion notificacion) {
     this.notificacionesDeseadas.remove(notificacion);
   }
+
+  public void enviarNotificaciones(List<String> nuevasAlertas) {
+    this.notificacionesDeseadas.forEach(notificacion -> notificacion.notificar(this, nuevasAlertas));
+  }
 }
